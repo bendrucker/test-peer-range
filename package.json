@@ -1,0 +1,35 @@
+{
+  "name": "test-peer-range",
+  "version": "1.0.0",
+  "description": "Test a plugin against the full range of major supported versions of its parent",
+  "main": "./src",
+  "scripts": {
+    "test": "browserify -t babelify -t coverify test/*.js --bare | node | coverify"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bendrucker/test-peer-range.git"
+  },
+  "keywords": [
+    "test",
+    "peer",
+    "plugin",
+    "ci",
+    "version",
+    "range",
+    "major"
+  ],
+  "author": "Ben Drucker <bvdrucker@gmail.com> (http://www.bendrucker.me/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bendrucker/test-peer-range/issues"
+  },
+  "homepage": "https://github.com/bendrucker/test-peer-range#readme",
+  "dependencies": {
+    "babel-runtime": "~5.2.6",
+    "bluebird": "~2.9.25",
+    "ensure-array": "0.0.5",
+    "major-versions": "~1.0.1",
+    "npm": "~2.9.0"
+  }
+}
