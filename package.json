@@ -4,7 +4,7 @@
   "description": "Test a plugin against the full range of major supported versions of its parent",
   "main": "./src",
   "scripts": {
-    "test": "browserify -t babelify -t coverify test/*.js --bare | node | coverify"
+    "test": "babel-tape-runner test/*.js"
   },
   "repository": {
     "type": "git",
@@ -31,5 +31,9 @@
     "ensure-array": "0.0.5",
     "major-versions": "~1.0.1",
     "npm": "~2.9.0"
+  },
+  "devDependencies": {
+    "babel": "^5.2.15",
+    "babel-tape-runner": "^1.1.0"
   }
 }
