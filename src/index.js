@@ -9,12 +9,17 @@ import {resolve} from 'path'
 import assert from 'assert'
 import {partial} from 'ap'
 import {EventEmitter} from 'events'
+import defaults from 'defaults'
 
 export class Runner extends EventEmitter {
-  constructor (name, range, script = 'test-main') {
+  constructor (name, range, options = {}) {
     assert(name, 'Peer name must be defined')
     assert(range, 'Peer range must be defined')
-    Object.assign(this, {name, range, script})
+    defaults(options, {
+      script: 'test-main',
+      bail: true
+    })
+    Object.assign(this, {name, range, options})
   }
   versions () {
     return promisify(npm.commands.view)([name, 'dist-tags.latest'])
@@ -34,21 +39,38 @@ export class Runner extends EventEmitter {
   }
   runScript (version) {
     this.emit('prescript', version)
-    return promisify(npm.commands.runScript)([this.script])
-      .then(() => this.emit('postscript', version))
+    return promisify(npm.commands.runScript)([this.options.script])
+      .reflect()
+      .tap(() => this.emit('postscript', version))
+      .then((promise) => {
+        const result = {version}
+        if (promise.isFulfilled()) {
+          return Object.assign(result, {
+            passed: true
+          })
+        }
+        if (this.options.bail) {
+          throw promise.reason()
+        }
+        return Object.assign(result, {
+          passed: false
+        })
+      })
   }
   test (version) {
     return this.install(version)
       .bind(this)
       .then(this.runScript)
-      .then(this.uninstall)
+      .tap(this.uninstall)
   }
   run () {
     return load()
       .bind(this)
       .then(this.versions)
-      .each(this.test)
-      .then(() => this.install)
+      .map(this.test, {
+        concurrency: 1
+      })
+      .tap(() => this.install())
   }
 }
 
