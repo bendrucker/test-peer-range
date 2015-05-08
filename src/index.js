@@ -32,7 +32,7 @@ export class Runner extends EventEmitter {
       .then(() => this.emit('postinstall', version))
       .return(version)
   }
-  uninstall () {
+  uninstall (version) {
     this.emit('preuninstall', version)
     return promisify(npm.commands.uninstall)(this.name)
       .then(() => this.emit('postuninstall', version))
@@ -61,7 +61,7 @@ export class Runner extends EventEmitter {
     return this.install(version)
       .bind(this)
       .then(this.runScript)
-      .tap(this.uninstall)
+      .tap(() => this.uninstall(version))
   }
   run () {
     return load()
