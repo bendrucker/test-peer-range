@@ -22,7 +22,7 @@ export class Runner extends EventEmitter {
     Object.assign(this, {name, range, options})
   }
   versions () {
-    return promisify(npm.commands.view)([this.name, 'dist-tags.latest'])
+    return promisify(npm.commands.view)([this.name, 'dist-tags.latest'], true)
       .then(v => majorVersions(this.range, v))
       .tap((versions) => this.emit('versions', versions))
   }
