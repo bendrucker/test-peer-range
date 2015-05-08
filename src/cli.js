@@ -8,7 +8,7 @@ import {createLogger} from 'clout'
 
 const {cwd} = process
 const pkg = require(resolve(cwd(), 'package.json'))
-const log = createLogger(pkg.name)
+const log = createLogger('test-peer-range')
 
 const {argv} = yargs
   .demand(1)
