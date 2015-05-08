@@ -43,18 +43,14 @@ export class Runner extends EventEmitter {
       .reflect()
       .tap(() => this.emit('postscript', version))
       .then((promise) => {
-        const result = {version}
-        if (promise.isFulfilled()) {
-          return Object.assign(result, {
-            passed: true
-          })
+        const result = {
+          passed: promise.isFulfilled(),
+          version
         }
-        if (this.options.bail) {
+        this.emit('result', result)
+        if (this.options.bail && !result.passed) {
           throw promise.reason()
         }
-        return Object.assign(result, {
-          passed: false
-        })
       })
   }
   test (version) {
