@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Test a plugin against the full range of major supported versions of its parent",
   "main": "./src",
+  "bin": {
+    "test-peer-range": "./bin"
+  },
   "scripts": {
     "test": "babel-tape-runner test/*.js"
   },
