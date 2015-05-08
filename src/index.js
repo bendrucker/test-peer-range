@@ -7,11 +7,22 @@ import Promise from 'bluebird'
 import {cwd} from 'process'
 import {resolve} from 'path'
 import assert from 'assert'
+import {partial} from 'ap'
 const pkg = require(resolve(cwd(), 'package.json'))
 
 Promise.promisifyAll(npm)
 
-export default testPeer ()
+export default function testPeer (name, range, script) {
+  return majors(name, range).each(partial(run, name, script))
+}
+
+function run (name, script, version) {
+  return install(name, version)
+    .return(script)
+    .then(runScript)
+    .return(name)
+    .then(uninstall)
+}
 
 function majors (name, range) {
   assert(name, 'Peer name must be defined')
@@ -20,8 +31,8 @@ function majors (name, range) {
     .then(v => majorVersions(range, v))
 }
 
-function run (script) {
-  return npm.runScriptAsync(script)
+function runScript (name) {
+  return npm.runScriptAsync(name)
 }
 
 function install (name, version) {

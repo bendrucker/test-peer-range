@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/bendrucker/test-peer-range#readme",
   "dependencies": {
+    "ap": "^0.2.0",
     "babel-runtime": "~5.2.6",
     "bluebird": "~2.9.25",
     "ensure-array": "0.0.5",
