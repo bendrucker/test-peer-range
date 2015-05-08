@@ -27,7 +27,7 @@ function run (name, script, version) {
 function majors (name, range) {
   assert(name, 'Peer name must be defined')
   assert(range, 'Peer range must be defined')
-  return npm.viewAsync([name, 'versions.latest'])
+  return npm.viewAsync([name, 'dist-tags.latest'])
     .then(v => majorVersions(range, v))
 }
 
