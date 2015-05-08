@@ -4,7 +4,6 @@ import majorVersions from 'major-versions'
 import array from 'ensure-array'
 import npm from 'npm'
 import {promisify} from 'bluebird'
-import {cwd} from 'process'
 import {resolve} from 'path'
 import assert from 'assert'
 import {partial} from 'ap'
@@ -13,6 +12,7 @@ import defaults from 'defaults'
 
 export class Runner extends EventEmitter {
   constructor (name, range, options = {}) {
+    super()
     assert(name, 'Peer name must be defined')
     assert(range, 'Peer range must be defined')
     defaults(options, {
@@ -22,8 +22,8 @@ export class Runner extends EventEmitter {
     Object.assign(this, {name, range, options})
   }
   versions () {
-    return promisify(npm.commands.view)([name, 'dist-tags.latest'])
-      .then(v => majorVersions(range, v))
+    return promisify(npm.commands.view)([this.name, 'dist-tags.latest'])
+      .then(v => majorVersions(this.range, v))
       .tap((versions) => this.emit('versions', versions))
   }
   install (version = '') {
