@@ -4,7 +4,7 @@
   "description": "Test a plugin against the full range of major supported versions of its parent",
   "main": "./src",
   "bin": {
-    "test-peer-range": "./bin"
+    "test-peer-range": "./bin/index.js"
   },
   "scripts": {
     "test": "babel-tape-runner test/*.js"
@@ -32,8 +32,9 @@
     "ap": "^0.2.0",
     "babel-runtime": "~5.2.6",
     "bluebird": "~2.9.25",
+    "dot-prop": "^2.0.0",
     "ensure-array": "0.0.5",
-    "major-versions": "~1.0.1",
+    "major-versions": "~1.0.2",
     "npm": "~2.9.0",
     "yargs": "^3.8.0"
   },
