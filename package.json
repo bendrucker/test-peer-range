@@ -31,7 +31,8 @@
     "bluebird": "~2.9.25",
     "ensure-array": "0.0.5",
     "major-versions": "~1.0.1",
-    "npm": "~2.9.0"
+    "npm": "~2.9.0",
+    "yargs": "^3.8.0"
   },
   "devDependencies": {
     "babel": "^5.2.15",
