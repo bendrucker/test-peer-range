@@ -26,6 +26,8 @@ export class Runner extends EventEmitter {
   }
   versions () {
     return promisify(npm.commands.view)([this.name, 'dist-tags.latest'], true)
+      .then(Object.keys)
+      .get(0)
       .then(v => majorVersions(this.range, v))
       .tap((versions) => this.emit('versions', versions))
   }
