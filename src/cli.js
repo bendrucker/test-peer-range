@@ -42,10 +42,16 @@ new Runner(peer, range, {script, bail})
     log(`${outcome}: ${peer}@${version}`)
   })
   .run()
+  .then((results) => {
+    const failed = results.filter(r => !r.passed)
+    const passed = results.filter(r => r.passed)
+    log('Passed:', passed.length ? passed.join(', ') : 'None')
+    log('Failed:', failed.length ? failed.join(', ') : 'None')
+    if (failed.length) process.exit(1)
+  })
   .catch(fail)
 
 function fail (err) {
   log.error(err)
-  console.error(err.stack)
   process.exit(1)
 }
