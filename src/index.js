@@ -3,12 +3,15 @@
 import majorVersions from 'major-versions'
 import array from 'ensure-array'
 import npm from 'npm'
-import {promisify} from 'bluebird'
+import npmSpawn from 'spawn-npm-install'
+import {promisify, promisifyAll} from 'bluebird'
 import {resolve} from 'path'
 import assert from 'assert'
 import {partial} from 'ap'
 import {EventEmitter} from 'events'
 import defaults from 'defaults'
+
+promisifyAll(npmSpawn)
 
 export class Runner extends EventEmitter {
   constructor (name, range, options = {}) {
@@ -28,9 +31,11 @@ export class Runner extends EventEmitter {
   }
   install (version = '') {
     this.emit('preinstall', version)
-    return promisify(npm.commands.install)([`${this.name}@${version}`])
-      .then(() => this.emit('postinstall', version))
-      .return(version)
+    return npmSpawn.installAsync([`${this.name}@${version}`], {
+      stdio: 'inherit'
+    })
+    .then(() => this.emit('postinstall', version))
+    .return(version)
   }
   uninstall (version) {
     this.emit('preuninstall', version)
