@@ -51,6 +51,7 @@ export class Runner extends EventEmitter {
         if (this.options.bail && !result.passed) {
           throw promise.reason()
         }
+        return result
       })
   }
   test (version) {
@@ -63,9 +64,11 @@ export class Runner extends EventEmitter {
     return load()
       .bind(this)
       .then(this.versions)
-      .map(this.test, {
-        concurrency: 1
-      })
+      .reduce((results, version) => {
+        return this.test(version)
+          .bind(results)
+          .then(results.concat)
+      }, [])
       .tap(() => this.install())
   }
 }
