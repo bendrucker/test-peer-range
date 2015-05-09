@@ -1,6 +1,6 @@
 {
   "name": "test-peer-range",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Test a plugin against the full range of major supported versions of its parent",
   "main": "./src",
   "bin": {
