@@ -2,7 +2,7 @@
   "name": "test-peer-range",
   "version": "0.1.0",
   "description": "Test a plugin against the full range of major supported versions of its parent",
-  "main": "./src",
+  "main": "./lib",
   "bin": {
     "test-peer-range": "./bin/index.js"
   },
