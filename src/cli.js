@@ -16,11 +16,15 @@ const {argv} = yargs
     default: 'test-main',
     describe: 'test script'
   })
+  .option('bail', {
+    type: 'boolean',
+    describe: 'exit immediately after a failure'
+  })
 const [peer] = argv._
-const {script, verbose} = argv
+const {script, bail} = argv
 const range = prop.get(pkg, `peerDependencies.${peer}`)
 
-new Runner(peer, range, {script})
+new Runner(peer, range, {script, bail})
   .on('versions', (versions) => {
     log(`Testing ${peer} versions ${versions.join(', ')}`)
   })
