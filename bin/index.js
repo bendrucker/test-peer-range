@@ -1,5 +1,8 @@
+#!/usr/bin/env node
+
 'use strict'
 
-const path = require('path')
+var path = require('path')
+var main = path.dirname(require.resolve('../'))
 
-require(path.resolve(require.resolve('../'), './cli'))
+require(path.resolve(main, './cli'))
