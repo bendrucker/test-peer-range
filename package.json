@@ -30,7 +30,6 @@
   "homepage": "https://github.com/bendrucker/test-peer-range#readme",
   "dependencies": {
     "ap": "^0.2.0",
-    "babel-runtime": "~5.2.6",
     "bluebird": "~2.9.25",
     "clout": "^1.0.2",
     "defaults": "^1.0.2",
@@ -43,6 +42,8 @@
   },
   "devDependencies": {
     "babel": "^5.2.15",
+    "babel-core": "^5.2.17",
+    "babel-plugin-object-assign": "^1.1.0",
     "babel-tape-runner": "^1.1.0"
   }
 }
