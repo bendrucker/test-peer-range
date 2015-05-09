@@ -1,7 +1,6 @@
 'use strict'
 
 import majorVersions from 'major-versions'
-import array from 'ensure-array'
 import npm from 'npm'
 import npmSpawn from 'spawn-npm-install'
 import {promisify, promisifyAll} from 'bluebird'

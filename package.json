@@ -34,7 +34,6 @@
     "clout": "^1.0.2",
     "defaults": "^1.0.2",
     "dot-prop": "^2.0.0",
-    "ensure-array": "0.0.5",
     "major-versions": "~1.0.2",
     "npm": "~2.9.0",
     "require-relative-main": "^1.1.0",
