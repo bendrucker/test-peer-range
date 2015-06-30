@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "test-main": "npm la xtend --parseable"
+  },
+  "peerDependencies": {
+    "xtend": ">=2 <=4"
+  }
+}

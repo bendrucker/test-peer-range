@@ -2,7 +2,7 @@
   "name": "test-peer-range",
   "version": "1.0.1",
   "description": "Test a plugin against the full range of major supported versions of its parent",
-  "main": "./src",
+  "main": "index.js",
   "bin": {
     "test-peer-range": "./bin/index.js"
   },
@@ -29,31 +29,18 @@
   },
   "homepage": "https://github.com/bendrucker/test-peer-range#readme",
   "dependencies": {
-    "ap": "^0.2.0",
-    "bluebird": "~2.9.25",
-    "clout": "^1.0.2",
-    "defaults": "^1.0.2",
-    "dot-prop": "^2.0.0",
-    "major-versions": "~1.0.2",
-    "npm": "~2.9.0",
-    "require-relative-main": "^1.1.0",
-    "spawn-npm-install": "^1.1.0",
-    "yargs": "^3.8.0"
+    "ap": "~0.2.0",
+    "clout": "~3.0.0",
+    "dot-prop": "~2.2.0",
+    "eavesdrop": "~2.0.0",
+    "latest-version": "~1.0.1",
+    "major-versions": "~2.0.0",
+    "meow": "~3.3.0",
+    "mothership": "~0.3.0",
+    "run-versions": "~1.0.2",
+    "xtend": "~4.0.0"
   },
   "devDependencies": {
-    "babel": "^5.2.15",
-    "babel-core": "^5.2.17",
-    "babel-plugin-object-assign": "^1.1.0",
-    "babel-tape-runner": "^1.1.0",
-    "publicist": "^4.0.4",
-    "publicist-es5": "^1.0.0"
-  },
-  "publicist": {
-    "builds": {
-      "es5": {
-        "src": "./src/*.js",
-        "dest": "./lib"
-      }
-    }
+    "tape": "~4.0.0"
   }
 }
