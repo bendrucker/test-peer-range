@@ -4,7 +4,7 @@
   "description": "Test a plugin against the full range of major supported versions of its parent",
   "main": "index.js",
   "bin": {
-    "test-peer-range": "./bin/index.js"
+    "test-peer-range": "./cli.js"
   },
   "scripts": {
     "test": "babel-tape-runner test/*.js"
@@ -42,5 +42,8 @@
   },
   "devDependencies": {
     "tape": "~4.0.0"
-  }
+  },
+  "files": [
+    "*.js"
+  ]
 }
