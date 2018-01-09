@@ -7,7 +7,7 @@
     "test-peer-range": "./cli.js"
   },
   "scripts": {
-    "test": "babel-tape-runner test/*.js"
+    "test": "tape test/*.js"
   },
   "repository": {
     "type": "git",
