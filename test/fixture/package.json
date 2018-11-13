@@ -4,5 +4,6 @@
   },
   "peerDependencies": {
     "xtend": ">=2 <=4"
-  }
+  },
+  "dependencies": {}
 }

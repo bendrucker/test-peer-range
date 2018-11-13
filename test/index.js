@@ -13,7 +13,7 @@ test('cli', function (t) {
   }
   execFile(cliPath, ['xtend'], options, function (err, stdout, stderr) {
     if (err) return t.end(err)
-    t.ok(/Passed: 2, 3, 4/.test(stdout))
-    t.ok(/Failed: None/.test(stdout))
+    t.ok(/Passed: 2, 3, 4/.test(stdout), 'stdout includes 3 passing versions')
+    t.ok(/Failed: None/.test(stdout), 'stdout includes no failing versions')
   })
 })
