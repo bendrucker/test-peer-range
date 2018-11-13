@@ -29,7 +29,6 @@
   },
   "homepage": "https://github.com/bendrucker/test-peer-range#readme",
   "dependencies": {
-    "ap": "~0.2.0",
     "clout": "~3.0.0",
     "dot-prop": "~2.2.0",
     "eavesdrop": "~2.0.0",
@@ -37,8 +36,7 @@
     "major-versions": "~2.0.0",
     "meow": "~3.3.0",
     "mothership": "~0.3.0",
-    "run-versions": "~1.0.2",
-    "xtend": "~4.0.0"
+    "run-versions": "~1.0.2"
   },
   "devDependencies": {
     "tape": "~4.0.0"

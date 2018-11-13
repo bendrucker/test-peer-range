@@ -5,9 +5,8 @@
 ## Install
 
 ```
-$ npm install --save-dev test-peer-range
+npm install --save-dev test-peer-range
 ```
-
 
 ## Usage
 
@@ -48,10 +47,6 @@ Default: `false`
 Exit immediately when any test fails. 
 
 ## API
-
-```js
-var run = require('test-peer-range')
-```
 
 #### `run(name, range, [options], callback)`
 

@@ -2,14 +2,13 @@
 
 'use strict'
 
-var testRange = require('./')
-var meow = require('meow')
-var mothership = require('mothership')
-var dot = require('dot-prop')
-var extend = require('xtend')
-var log = require('clout')('test-peer-range')
+const testRange = require('./')
+const meow = require('meow')
+const mothership = require('mothership')
+const dot = require('dot-prop')
+const log = require('clout')('test-peer-range')
 
-var minimist = {
+const minimist = {
   boolean: ['npm', 'bail'],
   default: {
     npm: true,
@@ -17,7 +16,7 @@ var minimist = {
   }
 }
 
-var cli = meow({
+const cli = meow({
   help: [
     'Usage',
     '  test-peer-range <name>',
@@ -28,7 +27,7 @@ var cli = meow({
   ]
 }, minimist)
 
-var name = cli.input[0]
+const name = cli.input[0]
 
 if (!name) {
   console.log('Usage: test-peer-range <name>')
@@ -39,16 +38,16 @@ function getPeer (pack) {
   return dot.get(pack, 'peerDependencies.' + name)
 }
 
-var pkg = mothership.sync(process.cwd(), getPeer)
+const pkg = mothership.sync(process.cwd(), getPeer)
 if (!pkg) fail('No peerDep found for ' + name)
-var range = getPeer(pkg.pack)
+const range = getPeer(pkg.pack)
 
-var defaults = {
+const defaults = {
   child_process: {
     stdio: 'inherit'
   }
 }
-var options = extend(defaults, cli.flags)
+const options = Object.assign({}, defaults, cli.flags)
 
 testRange(name, range, options, done)
   .on('versions', function (versions) {
@@ -64,14 +63,14 @@ testRange(name, range, options, done)
     log('Starting "%s" for %s@%s', options.command, name, version)
   })
   .on('result', function (version, passed) {
-    var outcome = passed ? 'Passed' : 'Failed'
+    const outcome = passed ? 'Passed' : 'Failed'
     log('%s: %s@%s', outcome, name, version)
   })
 
 function done (err, results) {
   if (err) return fail(err)
-  var passedOn = results.filter(passed).map(version)
-  var failedOn = results.filter(failed).map(version)
+  const passedOn = results.filter(passed).map(version)
+  const failedOn = results.filter(failed).map(version)
   log('Passed:', passedOn.join(', ') || 'None')
   log('Failed:', failedOn.join(', ') || 'None')
   if (failedOn.length) process.exit(1)
