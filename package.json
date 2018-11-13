@@ -33,7 +33,7 @@
     "dot-prop": "~4.2.0",
     "eavesdrop": "~2.0.0",
     "latest-version": "~4.0.0",
-    "major-versions": "~2.0.0",
+    "major-versions": "~2.1.0",
     "meow": "~5.0.0",
     "mothership": "~0.3.0",
     "run-versions": "~1.0.2"
