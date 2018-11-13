@@ -22,13 +22,14 @@ module.exports = function testRange (name, range, options, callback) {
 
   const events = new EventEmitter()
 
-  latest(name, function (err, version) {
-    if (err) return callback(err)
-    options.versions = majors(range, version)
-    events.emit('versions', options.versions)
-    const runner = run(options, callback)
-    eavesdrop(runner, events)
-  })
+  latest(name)
+    .then(function (version) {
+      options.versions = majors(range, version)
+      events.emit('versions', options.versions)
+      const runner = run(options, callback)
+      eavesdrop(runner, events)
+    })
+    .catch(callback)
 
   return events
 }

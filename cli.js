@@ -8,24 +8,30 @@ const mothership = require('mothership')
 const dot = require('dot-prop')
 const log = require('clout')('test-peer-range')
 
-const minimist = {
-  boolean: ['npm', 'bail'],
-  default: {
-    npm: true,
-    command: 'test-main'
-  }
-}
+const cli = meow(`
+  Usage
+    test-peer-range <package>
 
-const cli = meow({
-  help: [
-    'Usage',
-    '  test-peer-range <name>',
-    'Options',
-    '  --command <command>   the test command (default: "test-main")',
-    '  --npm                 treat the command as an npm script (default: true)',
-    '  --bail                exit immediately after failure (default: false)'
-  ]
-}, minimist)
+  Options
+    --command <command>   the test command (default: "test-main"),
+    --npm                 treat the command as an npm script (default: true),
+    --bail                exit immediately after failure (default: false)
+`, {
+  flags: {
+    npm: {
+      type: 'boolean',
+      default: true
+    },
+    command: {
+      type: 'string',
+      default: 'test-main'
+    },
+    bail: {
+      type: 'boolean',
+      default: false
+    }
+  }
+})
 
 const name = cli.input[0]
 
