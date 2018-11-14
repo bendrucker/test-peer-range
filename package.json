@@ -7,7 +7,7 @@
     "test-peer-range": "./cli.js"
   },
   "scripts": {
-    "test": "tape test/*.js"
+    "test": "standard && tape test/*.js"
   },
   "repository": {
     "type": "git",
@@ -39,6 +39,7 @@
     "run-versions": "~1.0.2"
   },
   "devDependencies": {
+    "standard": "^12.0.1",
     "tape": "~4.9.1"
   },
   "files": [

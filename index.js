@@ -3,7 +3,7 @@
 const assert = require('assert')
 const latest = require('latest-version')
 const majors = require('major-versions')
-const EventEmitter = require('events').EventEmitter
+const { EventEmitter } = require('events')
 const eavesdrop = require('eavesdrop')
 const run = require('run-versions')
 
@@ -15,10 +15,12 @@ const defaults = {
   command: 'test-main'
 }
 
-module.exports = function testRange (name, range, options, callback) {
+module.exports = testPeer
+
+function testPeer (name, range, options, callback) {
   assert(name, 'Peer name must be defined')
   assert(range, 'Peer range must be defined')
-  options = Object.assign({}, options, {name})
+  options = Object.assign({}, defaults, options, { name })
 
   const events = new EventEmitter()
 
