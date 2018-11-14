@@ -29,6 +29,7 @@
   },
   "homepage": "https://github.com/bendrucker/test-peer-range#readme",
   "dependencies": {
+    "array-uniq": "^2.0.0",
     "clout": "~3.0.0",
     "dot-prop": "~4.2.0",
     "eavesdrop": "~2.0.0",

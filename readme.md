@@ -25,9 +25,18 @@ Type: `string`
 
 The package name of the peer.
 
+##### --versions
+
+Type: `array[string]`  
+Alias: `-v`  
+Default: `test-main`
+
+Additional versions to test, on top of major versions specified in `peerDependencies`. Repeat this flag to specify multiple versions, e.g. `-v 1.2.3 -v 4.5.6`.
+
 ##### --command
 
 Type: `string`  
+Alias: `-c`  
 Default: `test-main`
 
 A command to run for each version. By default this is expected to be an npm script.

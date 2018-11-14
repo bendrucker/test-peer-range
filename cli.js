@@ -10,12 +10,13 @@ const log = require('clout')('test-peer-range')
 
 const cli = meow(`
   Usage
-    test-peer-range <package>
+    test-peer-range <package>       Tests the latest of each major version of the peer package
 
   Options
-    --command <command>   the test command (default: "test-main"),
-    --npm                 treat the command as an npm script (default: true),
-    --bail                exit immediately after failure (default: false)
+    --versions, -v <v1> -v <v2...>  additional versions to test
+    --command, -c <command>         the test command (default: "test-main")
+    --npm                           treat the command as an npm script (default: true)
+    --bail                          exit immediately after failure (default: false)
 `, {
   flags: {
     npm: {
@@ -24,11 +25,17 @@ const cli = meow(`
     },
     command: {
       type: 'string',
+      alias: 'c',
       default: 'test-main'
     },
     bail: {
       type: 'boolean',
       default: false
+    },
+    versions: {
+      type: 'array',
+      alias: 'v',
+      default: []
     }
   }
 })
