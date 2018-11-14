@@ -1,8 +1,9 @@
 'use strict'
 
 const assert = require('assert')
-const latest = require('latest-version')
+const versions = require('pkg-versions')
 const majors = require('major-versions')
+const semver = require('semver')
 const { EventEmitter } = require('events')
 const eavesdrop = require('eavesdrop')
 const run = require('run-versions')
@@ -24,10 +25,13 @@ function testPeer (name, range, options, callback) {
 
   const events = new EventEmitter()
 
-  latest(name)
-    .then(function (version) {
-      options.versions = majors(range, version)
+  versions(name)
+    .then(function (versions) {
+      const latest = semver.maxSatisfying(Array.from(versions), range)
+      options.versions = majors(range, latest)
+
       events.emit('versions', options.versions)
+
       const runner = run(options, callback)
       eavesdrop(runner, events)
     })
