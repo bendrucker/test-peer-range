@@ -32,7 +32,6 @@ function testPeer (name, range, options, callback) {
     .then(function (versions) {
       const latest = semver.maxSatisfying(Array.from(versions), range)
       options.versions = unique([].concat(options.versions).concat(majors(range, latest)))
-      console.log(options.versions)
       events.emit('versions', options.versions)
 
       const runner = run(options, callback)
