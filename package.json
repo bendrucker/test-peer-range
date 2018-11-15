@@ -37,7 +37,7 @@
     "meow": "~5.0.0",
     "mothership": "~0.3.0",
     "pkg-versions": "^1.1.0",
-    "run-versions": "~1.0.2",
+    "run-versions": "~2.0.0",
     "semver": "^5.6.0"
   },
   "devDependencies": {
