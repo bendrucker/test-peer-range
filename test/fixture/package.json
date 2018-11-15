@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "test-main": "npm la xtend --parseable"
+    "test-main": "node -p \"require('xtend/package.json').version\""
   },
   "peerDependencies": {
     "xtend": ">=2 <=4"
