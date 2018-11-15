@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "test-main": "node -p \"require('xtend/package.json').version\""
+    "test-main": "node -p \"require('xtend/package.json').version\"",
+    "echo": "echo"
   },
   "peerDependencies": {
     "xtend": ">=2 <=4"

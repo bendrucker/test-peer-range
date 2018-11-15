@@ -24,7 +24,16 @@ module.exports = testPeer
 function testPeer (name, range, options, callback) {
   assert(name, 'Peer name must be defined')
   assert(range, 'Peer range must be defined')
-  options = Object.assign({}, defaults, options, { name })
+  options = Object.assign({}, defaults, options, {
+    name,
+    command: [
+      options.command,
+      options.npm && '--'
+    ]
+      .filter(Boolean)
+      .concat(options.arguments)
+      .join(' ')
+  })
 
   const events = new EventEmitter()
 

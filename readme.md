@@ -11,8 +11,32 @@ npm install --save-dev test-peer-range
 ## Usage
 
 ```sh
-$ test-peer-range browserify
+test-peer-range browserify
 ```
+
+In `package.json`:
+
+```json
+{
+  "name": "transformify",
+  "description": "A browserify transform",
+  "scripts": {
+    "test": "test-peer-range browserify",
+    "test-main": "node test.js"
+  },
+  "devDependencies": {
+    "browserify": "16",
+    "test-peer-range": "*"
+  },
+  "peerDependencies": {
+    "browserify": ">= 14"
+  }
+}
+```
+
+The program will execute `test-main` for each major version (e.g. 14, 15, 16) of the peer. This is useful for maintaining backward compatibility for plugins. As long as the peer dependency follows [semver](https://semver.org/), you can be confident that your code works on old versions while developing against a more recent line.
+
+Arguments are passed through, so running `npm test -- --inspect` would result in `node test.js --inspect` as your test command.
 
 ## CLI
 
@@ -46,7 +70,7 @@ A command to run for each version. By default this is expected to be an npm scri
 Type: `boolean`  
 Default: `true`
 
-Disable npm to run the --command directly.
+Disable npm to run the `--command` directly.
 
 ##### --bail
 
@@ -81,6 +105,13 @@ Type: `string`
 Default: `test-main`
 
 The test command to run.
+
+###### arguments
+
+Type: `array[string]`  
+Default: `[]`
+
+Additional command line arguments to pass to the command. For npm scripts, these will be passed to the script itself, not `npm run`.
 
 ###### npm
 

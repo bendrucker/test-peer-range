@@ -41,11 +41,7 @@ const cli = meow(`
 })
 
 const name = cli.input[0]
-
-if (!name) {
-  console.log('Usage: test-peer-range <name>')
-  process.exit(1)
-}
+if (!name) cli.showHelp()
 
 function getPeer (pack) {
   return dot.get(pack, 'peerDependencies.' + name)
@@ -56,11 +52,12 @@ if (!pkg) fail('No peerDep found for ' + name)
 const range = getPeer(pkg.pack)
 
 const defaults = {
+  arguments: [],
   child_process: {
     stdio: 'inherit'
   }
 }
-const options = Object.assign({}, defaults, cli.flags)
+const options = Object.assign({}, defaults, cli.flags, { arguments: cli.input.slice(1) })
 
 testRange(name, range, options, done)
   .on('versions', function (versions) {
