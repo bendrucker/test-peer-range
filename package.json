@@ -36,7 +36,7 @@
     "major-versions": "~2.2.0",
     "meow": "~5.0.0",
     "mothership": "~0.3.0",
-    "pkg-versions": "^1.1.0",
+    "pkg-versions": "^2.0.0",
     "run-versions": "~2.0.0",
     "semver": "^5.6.0"
   },
