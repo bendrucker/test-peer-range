@@ -36,14 +36,13 @@
     "major-versions": "~2.2.0",
     "meow": "~5.0.0",
     "mothership": "~0.3.0",
-    "pkg-versions": "^1.1.0",
+    "pkg-versions": "^2.0.0",
     "run-versions": "~2.0.0",
     "semver": "^6.0.0"
   },
   "devDependencies": {
-    "package-versions": "^0.1.0",
     "standard": "^12.0.1",
-    "tape": "~4.10.0"
+    "tape": "^4.10.0"
   },
   "files": [
     "*.js"
