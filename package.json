@@ -38,7 +38,7 @@
     "mothership": "~0.3.0",
     "pkg-versions": "^2.0.0",
     "run-versions": "~2.0.0",
-    "semver": "^6.0.0"
+    "semver": "^7.3.1"
   },
   "devDependencies": {
     "standard": "^14.0.0",
