@@ -33,9 +33,10 @@ const cli = meow(`
       default: false
     },
     versions: {
-      type: 'array',
+      type: 'string',
       alias: 'v',
-      default: []
+      default: [],
+      isMultiple: true
     }
   }
 })
