@@ -72,6 +72,10 @@ testRange(name, range, options, done)
   })
   .on('prescript', function (version) {
     log('Starting "%s" for %s@%s', options.command, name, version)
+
+    if (options.arguments.length) {
+      log('Arguments: %s', JSON.stringify(options.arguments))
+    }
   })
   .on('result', function (version, passed) {
     const outcome = passed ? 'Passed' : 'Failed'
