@@ -1,6 +1,6 @@
 {
   "name": "test-peer-range",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Test a package against the full range of major supported versions of a peer dependency",
   "main": "index.js",
   "bin": {
