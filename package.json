@@ -41,8 +41,8 @@
     "semver": "^6.0.0"
   },
   "devDependencies": {
-    "standard": "^14.0.0",
-    "tape": "^5.0.0"
+    "standard": "^17.0.0",
+    "tape": "^5.5.3"
   },
   "files": [
     "*.js"

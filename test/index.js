@@ -1,14 +1,14 @@
 'use strict'
 
-var test = require('tape')
-var path = require('path')
-var execFile = require('child_process').execFile
+const test = require('tape')
+const path = require('path')
+const execFile = require('child_process').execFile
 
-var cliPath = path.resolve(__dirname, '../cli.js')
+const cliPath = path.resolve(__dirname, '../cli.js')
 
 test('cli', function (t) {
   t.plan(2)
-  var options = {
+  const options = {
     cwd: path.resolve(__dirname, 'fixture')
   }
   execFile(cliPath, ['xtend'], options, function (err, stdout, stderr) {
@@ -21,7 +21,7 @@ test('cli', function (t) {
 
 test('--versions', function (t) {
   t.plan(2)
-  var options = {
+  const options = {
     cwd: path.resolve(__dirname, 'fixture')
   }
   execFile(cliPath, ['xtend', '-v', '2.1.1', '-v', '2.2.0'], options, function (err, stdout, stderr) {
@@ -34,7 +34,7 @@ test('--versions', function (t) {
 
 test.only('arguments', function (t) {
   t.plan(1)
-  var options = {
+  const options = {
     cwd: path.resolve(__dirname, 'fixture')
   }
   execFile(cliPath, ['xtend', '-c', 'echo', 'foo'], options, function (err, stdout, stderr) {
