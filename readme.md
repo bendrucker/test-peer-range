@@ -1,4 +1,4 @@
-# test-peer-range [![Build Status](https://travis-ci.org/bendrucker/test-peer-range.svg?branch=master)](https://travis-ci.org/bendrucker/test-peer-range) [![Greenkeeper badge](https://badges.greenkeeper.io/bendrucker/test-peer-range.svg)](https://greenkeeper.io/)
+# test-peer-range
 
 > Test a package against the full range of major supported versions of a peer dependency
 

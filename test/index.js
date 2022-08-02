@@ -32,7 +32,7 @@ test('--versions', function (t) {
   })
 })
 
-test('arguments', function (t) {
+test.only('arguments', function (t) {
   t.plan(1)
   var options = {
     cwd: path.resolve(__dirname, 'fixture')
@@ -40,6 +40,6 @@ test('arguments', function (t) {
   execFile(cliPath, ['xtend', '-c', 'echo', 'foo'], options, function (err, stdout, stderr) {
     if (err) return t.end(err)
     stdout = stdout.toString()
-    t.ok(stdout.includes('echo "foo"'), 'passes arguments after 0 to command')
+    t.ok(stdout.includes('Arguments: ["foo"]'), 'passes arguments after 0 to command')
   })
 })
